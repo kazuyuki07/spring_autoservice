@@ -47,10 +47,10 @@ public class AutoserviceController {
         );
     }
 
-    @PatchMapping("/status")
+    @PatchMapping("/status/{orderId}")
     @ResponseStatus(HttpStatus.OK)
-    public AutoServiceOrderDTO updateOrderStatusById(@RequestParam Long id, @RequestParam String status) {
-        Orders changedOrder = ordersService.updateOrderStatusById(id, status);
+    public AutoServiceOrderDTO updateOrderStatusById(@PathVariable Long orderId, @RequestParam String status) {
+        Orders changedOrder = ordersService.updateOrderStatusById(orderId, status);
         AutoServices autoService = autoserviceService.getAutoServiceById(changedOrder.getServiceId());
 
         return new AutoServiceOrderDTO(
