@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: autoservice
+
+  schedule:
+    clean-service-history:
+      cron: "0 0 0 ? * Sun" # Каждое воскресенье в 00:00 удаление истории заказов
+      deadline-by-year: 5 # Срок хранения истории заказов (в годах)
+
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/autoservice
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
